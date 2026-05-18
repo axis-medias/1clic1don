@@ -1,3 +1,20 @@
+# 1. CES 3 LIGNES SONT OBLIGATOIRES (Elles lient Flutter à CocoaPods)
+podi_file_path = File.dirname(File.realpath(__FILE__))
+def flutter_root
+  generated_xcode_build_settings_path = File.expand_path(File.join('..', 'Flutter', 'Generated.xcconfig'), __FILE__)
+  unless File.exist?(generated_xcode_build_settings_path)
+    raise "Generated.xcconfig not found. Run 'flutter pub get' in the project root."
+  end
+  File.foreach(generated_xcode_build_settings_path) do |line|
+    matches = line.match(/FLUTTER_ROOT=(.*)/)
+    return matches[1].strip if matches
+  end
+  raise "FLUTTER_ROOT not found in Generated.xcconfig. Try deleting Generated.xcconfig and running 'flutter pub get'"
+end
+
+load File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelper.rb'), flutter_root)
+
+# 2. Ta configuration commence ici
 platform :ios, '13.0'
 
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
@@ -6,10 +23,11 @@ target 'Runner' do
   use_frameworks!
   use_modular_headers!
 
+  # Tes dépendances spécifiques
   pod 'Google-Mobile-Ads-SDK'
   pod 'UnityAds', '~> 4.12'
 
-  # Intégration automatique des plugins Flutter
+  # Cette commande fonctionne ENFIN grâce au script chargé à la ligne 15
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end
 
@@ -17,7 +35,7 @@ post_install do |installer|
   installer.pods_project.targets.each do |target|
     flutter_additional_ios_build_settings(target)
 
-    # Corrige un problème potentiel de déploiement minimum
+    # Force toutes les dépendances à s'aligner sur iOS 13
     target.build_configurations.each do |config|
       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
     end
