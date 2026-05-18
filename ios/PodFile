@@ -1,0 +1,13 @@
+platform :ios, '13.0'
+
+target 'Runner' do
+  use_frameworks!
+  use_modular_headers!
+
+  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+
+  # Ajout explicite du SDK AdMob si nécessaire
+  pod 'Google-Mobile-Ads-SDK'
+  pod 'UnityAds', '~> 4.12'
+  pod 'GoogleMobileAdsMediationPangle', '~> 5.9.0.9'
+end

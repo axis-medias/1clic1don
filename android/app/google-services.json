@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "557671347875",
+    "project_id": "clic1don",
+    "storage_bucket": "clic1don.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:557671347875:android:c0f0daf67bcf264bc73116",
+        "android_client_info": {
+          "package_name": "fr.u1clic1don.clic_1_don"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAu8xO6KeJGIAckg8u7C7DOSiEY218cNcc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

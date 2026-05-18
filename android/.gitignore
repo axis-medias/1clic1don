@@ -1,0 +1,39 @@
+# Flutter/Dart
+.dart_tool/
+.packages
+.pub/
+build/
+flutter_*.png
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Android
+android/.gradle/
+android/local.properties
+android/captures/
+android/gradle/
+android/gradlew
+android/gradlew.bat
+!android/gradlew
+!android/gradlew.bat
+!android/gradle/wrapper/
+
+# iOS
+ios/.symlinks/
+ios/Pods/
+ios/Runner.xcworkspace/
+ios/Runner.xcodeproj/
+ios/.generated/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# General
+*.log
+*.tmp
+*.bak
